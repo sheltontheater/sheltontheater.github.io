@@ -30,7 +30,7 @@ bundle exec jekyll build
 
 ## Site Structure
 
-- `_shows/` - Show/artist pages (uses `show` layout)
+- `_shows/` - Show/artist pages (uses `page` layout with `page-show` body class)
 - `_layouts/` - Page templates
 - `_includes/` - Reusable components
 - `_sass/` - SCSS stylesheets
@@ -52,9 +52,24 @@ weight: 1
 Show description here.
 ```
 
+### Front Matter Options
+
+The `page` layout supports these front matter options:
+
+```yaml
+hero_image: /images/hero.jpg    # Hero image at top of page
+hero_alt: Description of image  # Alt text (defaults to page title)
+tickets_url: https://...        # Shows "Buy Tickets" button
+website_url: https://...        # Shows "Website" button
+show_call: true                 # Shows contact info box
+gallery:                        # Image gallery
+  - src: /images/photo1.jpg
+    alt: Description
+```
+
 ### Hero Images
 
-Pages using `show`, `page`, or `contact` layouts support hero images. Add `hero_image` to the front matter. Recommended image ratio: **3:1** (e.g., 1800x600px).
+Recommended image ratio: **3:1** (e.g., 1800x600px).
 
 ## Deployment
 
