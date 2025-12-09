@@ -13,7 +13,7 @@ bodyClass: "page-basic"
 {% endif %}
 
 <div
-    class="container pb-6 {% if page.hero_image %}pt-4{% else %}pt-6 pt-md-10{% endif %} pb-md-10"
+    class="container pb-6 {% if page.hero_image %}pt-4{% else %}pt-6 pt-md-10{% endif %} pb-md-6"
 >
     <div class="row justify-content-start">
         <div class="col-12 col-md-8">
@@ -25,11 +25,21 @@ bodyClass: "page-basic"
                 </div>
                 {% if page.tickets_url or page.website_url %}
                 <div class="show-buttons">
-                    {% if page.tickets_url %}<a class="button" href="{{ page.tickets_url }}">Buy Tickets</a>{% endif %}
-                    {% if page.website_url %}<a class="button" href="{{ page.website_url }}">Website</a>{% endif %}
+                    {% if page.tickets_url %}<a
+                        class="button"
+                        href="{{ page.tickets_url }}"
+                        target="_blank"
+                        rel="noopener"
+                        >Buy Tickets</a
+                    >{% endif %} {% if page.website_url %}<a
+                        class="button"
+                        href="{{ page.website_url }}"
+                        target="_blank"
+                        rel="noopener"
+                        >Website</a
+                    >{% endif %}
                 </div>
-                {% endif %}
-                {% if page.gallery %}
+                {% endif %} {% if page.gallery %}
                 <div class="gallery">
                     {% for image in page.gallery %}
                     <div class="gallery-item">
@@ -45,3 +55,31 @@ bodyClass: "page-basic"
         </div>
     </div>
 </div>
+
+{% if page.collection == 'shows' %} {% assign other_shows = site.shows |
+where_exp: "show", "show.url != page.url" %} {% if other_shows.size > 0 %}
+<div class="other-shows">
+    <div class="container">
+        <h2>Other Shows</h2>
+        <div class="row">
+            {% for show in other_shows %}
+            <div class="col-12 col-md-4">
+                <a href="{{ show.url | relative_url }}" class="show-card">
+                    {% if show.hero_image %}
+                    <div class="show-card-image">
+                        <img
+                            src="{{ show.hero_image | relative_url }}"
+                            alt="{{ show.hero_alt | default: show.title }}"
+                        />
+                    </div>
+                    {% endif %}
+                    <div class="show-card-content">
+                        <h3 class="show-card-title">{{ show.title }}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %} {% endif %}
