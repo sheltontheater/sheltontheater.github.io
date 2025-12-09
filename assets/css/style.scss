@@ -2,29 +2,35 @@
 ---
 
 // Colors
-$primary: #e5261f;
-$primary-dark: #a01b16;
-$secondary: #f88379;
-$black: #2f2f41;
+$primary: #222222;
+$primary-dark: #111111;
+$secondary: #999999;
+$black: #222222;
 $white: #ffffff;
-$white-offset: #fff6f8;
-$steel: #5c5a5a;
+$white-offset: #1a1a1a;
+$steel: #888888;
 
 // Links
 $link-color: $primary;
 $link-decoration: none;
-$link-hover-color: lighten($primary, 10%);
+$link-hover-color: lighten($primary, 25%);
 $link-hover-decoration: underline;
 
 // Fonts
-$font-family-base: Helvetica, Arial, sans-serif, -apple-system;
-$font-family-heading: "Playfair Display", serif, -apple-system;
+$font-family-base:
+    "Source Sans 3",
+    Helvetica,
+    Arial,
+    sans-serif,
+    -apple-system;
+$font-family-heading:
+    "Dosis",
+    sans-serif,
+    -apple-system;
 
 // Footer
-$footer-background-color: $primary;
+$footer-background-color: $black;
 $footer-text-color: $white;
-$sub-footer-background-color: darken($primary, 10%);
-$sub-footer-text-color: $white;
 
 // Bootstrap 5.3.2
 
@@ -86,7 +92,6 @@ $sub-footer-text-color: $white;
 @import "components/page";
 @import "components/header";
 @import "components/footer";
-@import "components/sub-footer";
 @import "components/logo";
 @import "components/main-menu";
 @import "components/main-menu-mobile";
@@ -95,24 +100,27 @@ $sub-footer-text-color: $white;
 @import "components/call";
 @import "components/title";
 @import "components/content";
-@import "components/intro";
-@import "components/intro-image";
 @import "components/strip";
-@import "components/feature";
 @import "components/social";
+@import "components/hero";
+@import "components/show-card";
+@import "components/location";
+@import "components/newsletter";
+@import "components/accordion";
+@import "components/gallery";
 // @import "components/fonts"; // Uncomment this line to self host font
 
 // Pages
-@import "pages/page-home";
-@import "pages/page-teams";
-@import "pages/page-service";
+@import "pages/page-show";
 
 body {
-  font-size: 16px;
-  line-height: 1.2;
-  font-family: $font-family-base;
-  @include media-breakpoint-up(md) {
     font-size: 16px;
-    line-height: 1.3;
-  }
+    line-height: 1.2;
+    font-family: $font-family-base;
+    background-color: $black;
+    color: $black;
+    @include media-breakpoint-up(md) {
+        font-size: 16px;
+        line-height: 1.3;
+    }
 }

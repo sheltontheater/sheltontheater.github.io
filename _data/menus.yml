@@ -1,9 +1,12 @@
 main:
-  - name: "Services"
-    url: "/services/"
+  - name: "Now Playing"
+    url: "/"
+    weight: 1
+  - name: "Venue Rental"
+    url: "/venue-rental/"
     weight: 2
-  - name: "Team"
-    url: "/team/"
+  - name: "FAQs"
+    url: "/faq/"
     weight: 3
   - name: "About"
     url: "/about/"
@@ -11,11 +14,3 @@ main:
   - name: "Contact"
     url: "/contact/"
     weight: 5
-
-footer:
-  - name: "Home"
-    url: "/"
-    weight: 1
-  - name: "Contact"
-    url: "/contact/"
-    weight: 2

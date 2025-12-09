@@ -3,67 +3,83 @@ layout: default
 bodyClass: "page-home"
 ---
 
-<div class="intro">
-  <div class="container">
-    <div class="row justify-content-start">
-      <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
-        {{ content }}
-        {% if page.show_call_box %}
-          {% include call.html show_button=true %}
-        {% endif %}
-      </div>
-      {% if page.intro_image %}
-      <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
-        <img alt="{{ page.title }}" class="intro-image{% if page.intro_image_absolute %} intro-image-absolute{% endif %}{% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}" src="{{ page.intro_image | relURL }}" />
-      </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
 <div class="strip">
-  <div class="container pt-6 pb-6 pb-md-10">
-    <div class="row justify-content-start">
-      {% assign limit = site.home.limit_services | default: 6 %}
-      {% for service in site.services limit: limit %}
-      <div class="col-12 col-md-4 mb-1">
-        <div class="service service-summary">
-          <div class="service-content">
-            <h2 class="service-title">
-              <a href="{{ service.url | relative_url }}">{{ service.title }}</a>
-            </h2>
-            <p>{{ service.excerpt | markdownify | strip_html | truncate: 100 }}</p>
-          </div>
+    <div class="container pt-6 pb-4">
+        <div class="row justify-content-start">
+            {% assign limit = site.home.limit_shows | default: 6 %} {% for show
+            in site.shows limit: limit %}
+            <div class="col-12 col-md-4">
+                <a href="{{ show.url | relative_url }}" class="show-card">
+                    {% if show.hero_image %}
+                    <div class="show-card-image">
+                        <img src="{{ show.hero_image | relative_url }}" alt="{{ show.hero_alt | default: show.title }}">
+                    </div>
+                    {% endif %}
+                    <div class="show-card-content">
+                        <h2 class="show-card-title">{{ show.title }}</h2>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
         </div>
-      </div>
-      {% endfor %}
     </div>
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <a class="button button-primary" href="{{ "services" | relative_url }}">View All Services</a>
-      </div>
-    </div>
-  </div>
 </div>
 
-{% if site.data.features %}
-<div class="strip strip-grey">
-  <div class="container pt-6 pb-6 pt-md-10 pb-md-10">
-    <div class="row justify-content-center">
-
-      {% for feature in site.data.features %}
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          {% if feature.image %}
-          <div class="feature-image"><img alt="{{ feature.title }} logo" src="{{ feature.image.url | relative_url }}" width="{{ feature.image.width }}" height="{{ feature.image.height }}" /></div>
-          {% endif %}
-          <h2 class="feature-title">{{ feature.title }}</h2>
-          <div class="feature-content">{{ feature.description }}</div>
+<div class="location-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4 mb-md-0">
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0459213024437!2d-122.41169712411589!3d37.78896357198174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808e9ab8da87%3A0x88809d6d0927c696!2sShelton%20Theater!5e0!3m2!1sen!2sus!4v1765267597539!5m2!1sen!2sus"
+                        width="100%"
+                        height="300"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    >
+                    </iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="location-info">
+                    <h2>Visit Us</h2>
+                    <p>
+                        The Shelton Theater is a non-profit organization that
+                        was founded in 1993. The Shelton family and its
+                        successors have been creating, supporting, and nurturing
+                        artists in the Bay Area since 1961. This lively
+                        organization with its rich history and powerful role in
+                        the arts community produces and hosts stand-up and
+                        improvisational comedy. It also shows artwork by local
+                        and guest artists. Until 2020, it produced plays,
+                        musicals, stand up comedy, music events, cabaret shows,
+                        film screenings, and lit slams.
+                    </p>
+                    <p>
+                        All donations are tax deductible. We are a welcoming
+                        community.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-      {% endfor %}
-
     </div>
-  </div>
+</div>
+
+{% if site.newsletter_form_url %}
+<div class="newsletter-section">
+    <div class="container">
+        <div class="newsletter-inner">
+            <h2>Stay in the Loop</h2>
+            <p>
+                Subscribe to our newsletter for show announcements and special
+                offers.
+            </p>
+            <a class="button" href="{{ site.newsletter_form_url }}"
+                >Subscribe</a
+            >
+        </div>
+    </div>
 </div>
 {% endif %}

@@ -1,33 +1,22 @@
 [
   {
-    "name": "Github",
-    "link": "https://github.com/zerostaticthemes/jekyll-serif-theme",
-    "image": "images/social/github.svg"
+    "name": "Facebook",
+    "link": "https://www.facebook.com/sheltontheater",
+    "image": "images/social/facebook.svg"
   },
   {
-    "name": "Twitter",
-    "link": "https://twitter.com/zerostaticio",
-    "image": "images/social/twitter.svg"
+    "name": "Yelp",
+    "link": "https://www.yelp.com/biz/shelton-theater-san-francisco",
+    "image": "images/social/yelp.svg"
   },
   {
-      "name": "Facebook",
-      "link": "https://facebook.com",
-      "image": "images/social/facebook.svg"
+    "name": "Instagram",
+    "link": "https://instagram.com/sheltontheater",
+    "image": "images/social/instagram.svg"
   },
   {
-      "name": "Email",
-      "link": "mailto:ekyllserif@example.com ",
-      "image": "images/social/email.svg"
-  },
-  {
-      "name": "Instagram",
-      "link": "https://instagram.com",
-      "image": "images/social/instagram.svg"
-  },
-  {
-      "name": "Discord",
-      "link": "https://discord.com",
-      "image": "images/social/discord.svg"
+    "name": "Email",
+    "link": "mailto:&#106;&#115;&#102;&#064;&#099;&#116;&#116;&#099;&#111;&#109;&#101;&#100;&#121;&#046;&#099;&#111;&#109;",
+    "image": "images/social/email.svg"
   }
-
 ]

@@ -3,12 +3,44 @@ layout: default
 bodyClass: "page-basic"
 ---
 
-<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+{% if page.hero_image %}
+<div class="hero">
+    <img
+        src="{{ page.hero_image | relative_url }}"
+        alt="{{ page.hero_alt | default: page.title }}"
+    />
+</div>
+{% endif %}
+
+<div
+    class="container pb-6 {% if page.hero_image %}pt-4{% else %}pt-6 pt-md-10{% endif %} pb-md-10"
+>
     <div class="row justify-content-start">
         <div class="col-12 col-md-8">
-            <div class="service service-single">
+            <div class="page-content">
                 <h1 class="title">{{page.title}}</h1>
-                <div class="content">{{content}}</div>
+                {% if page.show_call %}{% include call.html %}{% endif %}
+                <div class="content {% if page.show_call %}mt-4{% endif %}">
+                    {{content}}
+                </div>
+                {% if page.tickets_url or page.website_url %}
+                <div class="show-buttons">
+                    {% if page.tickets_url %}<a class="button" href="{{ page.tickets_url }}">Buy Tickets</a>{% endif %}
+                    {% if page.website_url %}<a class="button" href="{{ page.website_url }}">Website</a>{% endif %}
+                </div>
+                {% endif %}
+                {% if page.gallery %}
+                <div class="gallery">
+                    {% for image in page.gallery %}
+                    <div class="gallery-item">
+                        <img
+                            src="{{ image.src | relative_url }}"
+                            alt="{{ image.alt }}"
+                        />
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
