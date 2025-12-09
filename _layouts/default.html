@@ -35,12 +35,16 @@
         {% endif %}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ url }}" />
-        {% if page.image %}
-        <meta property="og:image" content="{{ page.image | absolute_url }}" />
+        {% if page.hero_image %}
+        <meta property="og:image" content="{{ page.hero_image | absolute_url }}" />
+        <meta name="twitter:card" content="summary_large_image" />
+        {% elsif site.default_image %}
+        <meta property="og:image" content="{{ site.default_image | absolute_url }}" />
+        <meta name="twitter:card" content="summary_large_image" />
+        {% else %}
+        <meta name="twitter:card" content="summary" />
         {% endif %} {% if page.description %}
         <meta property="og:description" content="{{ page.description }}" />
-        {% endif %}
-        <meta name="twitter:card" content="summary" />
         {% if site.data.seo.meta_twitter_site %}
         <meta name="twitter:site" content="{{ site.seo.meta_twitter_site }}" />
         {% endif %} {% if site.data.seo.meta_twitter_creator %}
